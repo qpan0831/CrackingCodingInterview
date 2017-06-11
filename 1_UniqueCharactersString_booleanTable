@@ -1,0 +1,30 @@
+//Time O(n) n  or O(1) since ascii code only have 256 characters.
+//Space O(1)
+public class Solution {
+    boolean uniqueChar(String str)
+    {
+        boolean[] ascii = new boolean[256];//Assume all characters are in ASCII extened;
+        for(int i=0;i<str.length();i++)
+        {
+            int value=str.charAt(i);
+            if(ascii[value])
+            {
+                return false;
+            }
+            else
+            {
+                ascii[value]=true;
+            }
+        }
+        return true;
+    }
+
+
+    public static void main(String[] args)
+    {
+       Solution s = new Solution();
+       String test="1234657oujdsz,mnv@SDFGQ?>";
+       System.out.println(s.uniqueChar(test));
+
+    }
+}
