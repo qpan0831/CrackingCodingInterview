@@ -1,0 +1,31 @@
+public class Solution {
+    boolean PermutationStrings(String str1,String str2)
+    {
+        //base case
+        if(str1==null||str2==null||str1.isEmpty()||str2.isEmpty())
+            return false;
+        if(str1.length()!=str2.length())
+            return false;
+
+        if(str1.equals(str2))
+            return false;
+        return mySort(str1).equals(mySort(str2));
+    }
+
+    String mySort(String str)
+    {
+        char[] ch = str.toCharArray();
+        Arrays.sort(ch);
+        return String.valueOf(ch);
+    }
+
+
+    public static void main(String[] args)
+    {
+       Solution s = new Solution();
+       String test1="123";
+       String test2="312";
+       System.out.println(s.PermutationStrings(test1,test2));
+
+    }
+}
