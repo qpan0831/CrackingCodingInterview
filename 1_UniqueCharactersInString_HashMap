@@ -1,0 +1,25 @@
+public class Solution {
+    boolean uniqueChar(String str)
+    {
+        Map<Character,Integer> map = new HashMap<>();
+        for(int i=0;i<str.length();i++)
+        {
+            if(map.containsKey(str.charAt(i)))
+            {
+                return false;
+            }
+            map.put(str.charAt(i),i);
+
+        }
+        return true;
+    }
+
+
+    public static void main(String[] args)
+    {
+       Solution s = new Solution();
+       String test="12346157oujdsz,mnv@SDFGQ?>";
+       System.out.println(s.uniqueChar(test));
+
+    }
+}
