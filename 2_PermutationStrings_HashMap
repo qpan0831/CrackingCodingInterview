@@ -1,0 +1,41 @@
+public class Solution {
+    boolean PermutationStrings(String str1,String str2)
+    {
+        //base case
+        if(str1==null||str2==null||str1.isEmpty()||str2.isEmpty())
+            return false;
+        if(str1.length()!=str2.length())
+            return false;
+
+        if(str1.equals(str2))
+            return false;
+        Map<Character,Integer> map = new HashMap<>();
+        for(int i=0;i<str1.length();i++)
+        {
+            map.put(str1.charAt(i),0);
+        }
+        int flag=0;
+        for(int i=0;i<str2.length();i++)
+        {
+            if(map.containsKey(str2.charAt(i))&&map.get(str2.charAt(i))!=1)
+            {
+               map.replace(str2.charAt(i),1);
+
+            }
+            else
+                return false;
+        }
+
+        return true;
+    }
+
+
+    public static void main(String[] args)
+    {
+       Solution s = new Solution();
+       String test1="123";
+       String test2="312";
+       System.out.println(s.PermutationStrings(test1,test2));
+
+    }
+}
