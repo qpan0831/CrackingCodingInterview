@@ -1,0 +1,53 @@
+import javax.naming.CompositeName;
+import java.nio.charset.CharacterCodingException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Arrays;
+/**
+ * Created by Qiang Pan on 6/9/2017.
+ */
+
+//Time O(n) n is length of the string
+// Space complexity O(n)
+public class Solution {
+    boolean oneAway(String str1,String str2)
+    {
+        if(str1.length()==str2.length()) return oneEditAway(str1,str2);
+        else if(str1.length()-str2.length()==1) return  oneInsert(str2,str1);//length of str2 is shorter
+        else if(str2.length()-str1.length()==1) return oneInsert(str1,str2);//length of str1 is shorter
+        else return false;
+    }
+    boolean oneEditAway(String a1,String a2)
+    {
+        int counter=0;
+        for(int i=0;i<a1.length();i++)
+        {
+            if(a1.charAt(i)!=a2.charAt(i))
+                counter++;
+            if(counter>1)
+                return  false;
+        }
+        return true;
+    }
+
+    boolean oneInsert(String a1,String a2)//a1 is shorter string
+    {
+        int counter=0;
+        for(int i=0;i<a1.length();i++)
+        {
+            if(a1.charAt(i)!=a2.charAt(i)&&a1.charAt(i)!=a2.charAt(i+1))
+                counter++;
+
+            if(counter>1)
+                return false;
+        }
+        return true;
+    }
+    public static void main(String[] args)
+    {
+        String test1="panqiang";
+        String test2="1panqiang";
+        Solution s= new Solution();
+        System.out.println(s.oneAway(test1,test2));
+    }
+}
