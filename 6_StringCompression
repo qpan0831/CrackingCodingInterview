@@ -1,0 +1,41 @@
+import javax.naming.CompositeName;
+import java.nio.charset.CharacterCodingException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Arrays;
+/**
+ * Created by Qiang Pan on 6/9/2017.
+ */
+
+//Time O(n) n is length of the string
+// Space complexity O(n)
+public class Solution {
+    String stringCompression(String str)
+    {
+        StringBuilder sb = new StringBuilder();
+        int counter=1;
+        int i=0;
+        while(i<str.length())
+        {
+            if(i+1<str.length()&&str.charAt(i)==str.charAt(i+1))
+            {
+                counter++;
+            }
+            else{
+                sb.append(str.charAt(i));
+                sb.append(counter);
+                counter=1;
+            }
+            i++;
+
+        }
+        String res=sb.toString();
+        return res.length()>str.length()?str:res;
+    }
+    public static void main(String[] args)
+    {
+        String test1="aaaccccceeffff";
+        Solution s= new Solution();
+        System.out.println(s.stringCompression(test1));
+    }
+}
