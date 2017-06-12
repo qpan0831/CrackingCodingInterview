@@ -1,0 +1,48 @@
+public class Solution {
+    String URLiy (int len, String str)
+    {
+        char[] temp=str.toCharArray();
+        System.out.println(temp.length+"  111");
+        StringBuilder sb = new StringBuilder();
+        int realIndex=0;
+        int whiteSpace=0;
+        for(int i=0;i<len;i++)
+        {
+            if(temp[i]==' ')
+                whiteSpace++;
+        }
+        realIndex=len+2*whiteSpace;
+        if(realIndex<str.length())
+            temp[realIndex]='\0';
+        for(int i=len-1;i>=0;i--)
+        {
+            if(temp[i]==' ')
+            {
+                temp[realIndex-1]='0';
+                temp[realIndex-2]='2';
+                temp[realIndex-3]='%';
+                realIndex=realIndex-3;
+            }
+            else {
+                temp[realIndex-1] = temp[i];
+                realIndex--;
+            }
+
+        }
+
+        return String.valueOf(temp);
+
+    }
+
+
+    public static void main(String[] args)
+    {
+       Solution s = new Solution();
+       String test1="Mr John Smith      ";
+       System.out.println(test1.length());
+       int len=13;
+
+       System.out.println(s.URLiy(len,test1));
+
+    }
+}
