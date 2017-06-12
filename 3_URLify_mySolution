@@ -1,0 +1,39 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Arrays;
+/**
+ * Created by Qiang Pan on 6/9/2017.
+ */
+
+//Time O(n) n is length of the string
+// Space complexity O(n)
+public class Solution {
+    String URLiy (int len, String str)
+    {
+        char[] temp=str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<len;i++)
+        {
+            if(temp[i]!=' ')
+            {
+                sb.append(temp[i]);
+            }
+            else
+            {
+                sb.append("%20");
+            }
+        }
+        return sb.toString();
+    }
+
+
+    public static void main(String[] args)
+    {
+       Solution s = new Solution();
+       String test1="Mr John Smith      ";
+       int len=13;
+
+       System.out.println(s.URLiy(len,test1));
+
+    }
+}
