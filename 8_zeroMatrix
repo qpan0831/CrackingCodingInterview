@@ -1,0 +1,80 @@
+import javax.naming.CompositeName;
+import java.nio.charset.CharacterCodingException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Arrays;
+/**
+ * Created by Qiang Pan on 6/9/2017.
+ */
+
+//Time O(n) n is length of the string
+// Space complexity O(n)
+public class Solution {
+     public void zeroMatrix(int[][] matrix)
+    {
+
+        boolean[] row = new boolean[matrix.length];
+        boolean[] col = new boolean[matrix[0].length];
+        for(int i=0;i<matrix.length;i++)
+        {
+            for(int j=0;j<matrix[0].length;j++)
+            {
+                if(matrix[i][j]==0)
+                {
+                    row[i]=true;
+                    col[j]=true;
+                }
+            }
+        }
+        for(int i=0;i<matrix.length;i++)
+        {
+            if(row[i])
+            {
+                changeRow(matrix,i);
+            }
+        }
+        for(int i=0;i<matrix[0].length;i++)
+        {
+            if(col[i])
+            {
+                changeCol(matrix,i);
+            }
+        }
+    }
+
+    void changeRow(int[][] matrix,int row)
+    {
+        for(int i=0;i<matrix[0].length;i++)
+        {
+            matrix[row][i]=0;
+        }
+    }
+    void changeCol(int[][] matrix,int col)
+    {
+        for(int i=0;i<matrix.length;i++)
+        {
+            matrix[i][col]=0;
+        }
+    }
+    public static void main(String[] args)
+    {
+        int[][] test ={
+                {11,12,13,14,9},
+                {21,0,23,24,9},
+                {31,32,33,34,9},
+                {41,42,43,0,9}
+        };
+        Solution s= new Solution();
+        s.zeroMatrix(test);
+        for(int i=0;i<test.length;i++)
+        {
+         for(int j=0;j<test[0].length;j++)
+         {
+             System.out.print(test[i][j]+" ");
+
+         }
+            System.out.println();
+        }
+
+    }
+}
