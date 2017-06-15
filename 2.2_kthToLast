@@ -1,4 +1,5 @@
     //return Kth element to the end of the list;
+    //Use two pointer p1 and p2, move p2 first to the first k-th, then move both p1 and p2 untill p2 hit the end, then p1 will be the k-th element away from the end. return P1
     public Node returnKth(Node head,int kth)
     {
         Node p1=head;
