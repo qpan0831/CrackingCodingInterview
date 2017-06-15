@@ -1,0 +1,21 @@
+    public void removeDuplicates(MyLinkedList list)
+    {
+        Node current = list.head;
+        Node previous = current;
+        Set<Integer> set = new HashSet<>();
+
+        while(current!=null)
+        {
+            if (set.contains(current.data))
+            {
+                previous.next=current.next;
+            }
+            else
+            {
+                set.add(current.data);
+                previous=current;
+            }
+
+            current=current.next;
+        }
+    }
