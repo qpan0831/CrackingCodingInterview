@@ -1,0 +1,46 @@
+    
+    //We have to consider cases when either l1 or l2 is shorter.
+    
+    
+    
+    public Node sumList(MyLinkedList l1, MyLinkedList l2)
+    {
+        int carry=0;
+        Node l1Head=l1.head;
+        Node l2Head=l2.head;
+        Node res= new Node(-1);
+        Node current = res;
+        while(l1Head!=null && l2Head!=null)
+        {
+           int sum=l1Head.data+l2Head.data+carry;
+            carry=sum/10;
+            sum=sum%10;
+            current.next=new Node(sum);
+            current=current.next;
+            l1Head=l1Head.next;
+            l2Head=l2Head.next;
+        }
+        while(l1Head!=null)
+        {
+            int sum=l1Head.data+carry;
+            carry=sum/10;
+            sum=sum%10;
+            current.next=new Node(sum);
+            current=current.next;
+            l1Head=l1Head.next;
+        }
+        while(l2Head!=null)
+        {
+            int sum=l2Head.data+carry;
+            carry=sum/10;
+            sum=sum%10;
+            current.next=new Node(sum);
+            current=current.next;
+            l2Head=l2Head.next;
+        }
+        if(carry==1)
+        {
+            current=new Node(carry);
+        }
+        return res;
+    }
